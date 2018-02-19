@@ -1,0 +1,23 @@
+/* All About Prolog */
+
+1. Prolog interpreter is invoked using prolog -i
+
+2. To load a file (my_example.P) ==> [my_example].
+
+3. To make a query:
+   a. load the program
+   b. then make a query ==> action(car, X).
+   c. to continue to make another query use ;
+
+4. To go into a mode to enter facts 
+   a. [user].
+   b. then put each fact on a line and end with a .
+   c. cntrl d (to quit from this mode).
+   d. then a query can be entered using the above facts.
+
+5. Programs can be written with rules and facts.
+
+6. To trace the execution of a program, enter trace.
+
+7. To stop enter halt.
+

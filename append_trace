@@ -1,0 +1,69 @@
+prolog -i
+klingon{rraje}1: XSB Version 1.4.3 (95/8/9)
+[sequential, single word, optimal mode]
+| ?- [list].
+[Compiling ./list]
+[list compiled, cpu time used: 0.63 seconds]
+[list loaded]
+
+yes
+| ?- trace.
+
+yes
+[trace]
+| ?- append([],jack,X).
+   (0) Call: append([],jack,_678356) ? 
+   (0) Exit: append([],jack,jack) ? 
+
+X = jack
+
+yes
+[trace]
+| ?- append([],jack. ,bob).
+   (0) Call: append([],jack,bob) ? 
+   (0) Fail: append([],jack,bob) ? 
+
+no
+[trace]
+| ?- append([x],jack,X).
+   (0) Call: append([x],jack,_678372) ? 
+   (1) Call: append([],jack,_678540) ? 
+   (1) Exit: append([],jack,jack) ? 
+   (0) Exit: append([x],jack,[x|jack]) ? 
+
+X = [x|jack]
+
+yes
+[trace]
+| ?- append([x,y,z,p,q],a jack,X).
+   (0) Call: append([x,y,z,p,q],jack,_678500) ? 
+   (1) Call: append([y,z,p,q],jack,_678732) ? 
+   (2) Call: append([z,p,q],jack,_678768) ? 
+   (3) Call: append([p,q],jack,_678804) ? 
+   (4) Call: append([q],jack,_678840) ? 
+   (5) Call: append([],jack,_678876) ? 
+   (5) Exit: append([],jack,jack) ? 
+   (4) Exit: append([q],jack,[q|jack]) ? 
+   (3) Exit: append([p,q],jack,[p,q|jack]) ? 
+   (2) Exit: append([z,p,q],jack,[z,p,q|jack]) ? 
+   (1) Exit: append([y,z,p,q],jack,[y,z,p,q|jack]) ? 
+   (0) Exit: append([x,y,z,p,q],jack,[x,y,z,p,q|jack]) ? 
+
+X = [x,y,z,p,q|jack]
+
+yes
+[trace]
+| ?- append([x,y,z],bob,jack).
+   (0) Call: append([x,y,z],bob,jack) ? 
+   (0) Fail: append([x,y,z],bob,jack) ? 
+
+no
+[trace]
+| ?- 
+
+
+
+^C[ Break (level 1) ]
+1: ?- halt.
+
+End XSB (cputime 1.72 secs, elapsetime 109.41 secs)
